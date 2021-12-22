@@ -27,11 +27,15 @@ const RenderCards: React.FC = () => {
 
   const handlerScroll = (e : any) => {
     const bottom = Math.ceil(window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight;
-    
+    var currentScrollYonSession = window.scrollY;
+
     if (bottom) {
       setPage(page+1);
+      console.log(currentScrollYonSession)
+      window.scroll(0, currentScrollYonSession);
       //window.scrollTo(0, Math.ceil(window.innerHeight + window.scrollY));
     }
+    e.preventDefault();
   }
 
   const fetchNews = async () => {
@@ -61,7 +65,7 @@ const RenderCards: React.FC = () => {
     fetchNews()
   }, [page])
 
-  if(isLoading) return <Spinner/>
+  //if(isLoading) return <Spinner/>
 
   return <>
     {
