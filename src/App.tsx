@@ -31,11 +31,8 @@ const RenderCards: React.FC = () => {
 
     if (bottom) {
       setPage(page+1);
-      //console.log(currentScrollYonSession)
       window.scroll(0, currentScrollYonSession);
-      //window.scrollTo(0, Math.ceil(window.innerHeight + window.scrollY));
     }
-    //e.preventDefault();
   }
 
   const fetchNews = async () => {
@@ -56,14 +53,11 @@ const RenderCards: React.FC = () => {
   useEffect(() => {
     console.log("UseEffect");    
     window.addEventListener('scroll', handlerScroll)
-    /*return () => {
-      window.removeEventListener('scroll', handlerScroll);
-    };*/
-  }, [])
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
   
   useEffect(() => {
     fetchNews()
-  }, [page])
+  }, [page]) // eslint-disable-line react-hooks/exhaustive-deps
 
   //if(isLoading) return <Spinner/>
 
