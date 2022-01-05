@@ -4,7 +4,7 @@ import { Article } from "../models/bussines/ApiNewsModel";
 
 import CloseImg from "../images/close.png";
 
-interface ArticleProps {
+interface ModalProps {
     article : Article,
     handlerShowModal : () => void
 }
@@ -59,7 +59,7 @@ const goPageStyle = {
     backgroundColor: "orange"
 }
 
-const Modal : React.FC<ArticleProps> = ({article, handlerShowModal} ) => {
+const Modal : React.FC<ModalProps> = ({article, handlerShowModal} ) => {
     return <ModalContainer>
         <ActionsBar>
             <a href={article.url} style={goPageStyle}>Go Page!</a>
