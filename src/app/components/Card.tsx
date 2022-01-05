@@ -1,6 +1,9 @@
+import React, { useState } from 'react';
+
 import styled from "styled-components";
 
 import { Article } from "../models/bussines/ApiNewsModel";
+import Modal from './Modal';
 
 const CardContainer = styled.div`
     width: 300px; 
@@ -22,14 +25,26 @@ interface ArticleProps {
     article : Article;
 }
   
-const Card: React.FC<ArticleProps> = ({article}) => {
-return <CardContainer>
-        <a href={article.url}>
+const Card : React.FC<ArticleProps> = ({article}) => {
+    const [showModal, setShowModal] = useState<boolean>(false);
+
+    const handlerShowModal = () => {
+        if(showModal) {
+            setShowModal(false);
+        }else {
+            setShowModal(true);
+        }
+    }
+
+    if(showModal) {
+        return <Modal article={article} handlerShowModal={handlerShowModal}/>
+    }
+
+    return <CardContainer>
             <H1>{article.title}</H1>
             <H2>{article.description}</H2>
-            <img src={article.urlToImage} alt="" width="150px" height="150px"/>
-        </a>
-    </CardContainer>
+            <img onClick={handlerShowModal} src={article.urlToImage} alt="" width="150px" height="150px"/>
+        </CardContainer>
 }
 
 export default Card;

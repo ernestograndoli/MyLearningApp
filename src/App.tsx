@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 import { NewsService } from './app/services/business';
 import { Article } from './app/models/bussines/ApiNewsModel';
+
 import Spinner from './app/components/Spinner';
 import Card from './app/components/Card';
 
@@ -31,8 +32,11 @@ const RenderCards: React.FC = () => {
 
     if (bottom) {
       setPage(page+1);
+      console.log(currentScrollYonSession)
       window.scroll(0, currentScrollYonSession);
+      //window.scrollTo(0, Math.ceil(window.innerHeight + window.scrollY));
     }
+    e.preventDefault();
   }
 
   const fetchNews = async () => {
@@ -53,11 +57,11 @@ const RenderCards: React.FC = () => {
   useEffect(() => {
     console.log("UseEffect");    
     window.addEventListener('scroll', handlerScroll)
-  }, []) // eslint-disable-line react-hooks/exhaustive-deps
+  }, [])
   
   useEffect(() => {
     fetchNews()
-  }, [page]) // eslint-disable-line react-hooks/exhaustive-deps
+  }, [page])
 
   //if(isLoading) return <Spinner/>
 
