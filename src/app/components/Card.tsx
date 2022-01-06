@@ -29,11 +29,7 @@ const Card : React.FC<ArticleProps> = ({article}) => {
     const [showModal, setShowModal] = useState<boolean>(false);
 
     const handlerShowModal = () => {
-        if(showModal) {
-            setShowModal(false);
-        }else {
-            setShowModal(true);
-        }
+        setShowModal(!showModal);
     }
 
     if(showModal) {

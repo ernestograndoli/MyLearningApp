@@ -32,9 +32,7 @@ const RenderCards: React.FC = () => {
 
     if (bottom) {
       setPage(page+1);
-      console.log(currentScrollYonSession)
       window.scroll(0, currentScrollYonSession);
-      //window.scrollTo(0, Math.ceil(window.innerHeight + window.scrollY));
     }
     e.preventDefault();
   }
