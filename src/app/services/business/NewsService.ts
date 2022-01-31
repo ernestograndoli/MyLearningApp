@@ -8,5 +8,4 @@ export default class NewsService {
             url: "https://newsapi.org/v2/top-headlines?country=us&page="+page
         })
     } 
-
 }

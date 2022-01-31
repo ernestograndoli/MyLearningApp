@@ -43,6 +43,7 @@ const IFrame = styled.iframe`
     border-left: 2px solid orange;
     border-right: 2px solid orange;
     border-bottom: 2px solid orange;
+    background-color: #fff;
 `
 const closeImgStyle = {
     width: "25px",
@@ -62,7 +63,7 @@ const goPageStyle = {
 const Modal : React.FC<ModalProps> = ({article, handlerShowModal} ) => {
     return <ModalContainer>
         <ActionsBar>
-            <a href={article.url} style={goPageStyle}>Go Page!</a>
+            <a href={article.url} target="_blank" rel="noreferrer" style={goPageStyle}>Go Page!</a>
             <img onClick={handlerShowModal} src={CloseImg} alt="closeModal" style={closeImgStyle}/>
         </ActionsBar>
         <IFrame src={article.url} title="description"></IFrame>      
